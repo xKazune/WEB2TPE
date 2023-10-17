@@ -13,9 +13,34 @@ class GameModel
     }
 
     function getGames() {
-        $sentencia= $this->db->prepare("SELECT * FROM games");
-        $sentencia->execute();
-        $ciudades = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $ciudades;
+        $select= $this->db->prepare("SELECT * FROM games");
+        $select->execute();
+        $games = $select->fetchAll(PDO::FETCH_OBJ);
+        return $games;
+    }
+
+    function getGamesandCompany() {
+        $select= $this->db->prepare("SELECT * FROM games INNER JOIN company ON games.company_ID = company.company_ID;");
+        $select->execute();
+        $games = $select->fetchAll(PDO::FETCH_OBJ);
+        return $games;
+    }
+
+    // FUNCIONA PARA OBTENER LOS DATOS DE LAS COMPAÑIAS
+    function getCompany() {
+        $select= $this->db->prepare("SELECT * FROM company");
+        $select->execute();
+        $company = $select->fetchAll(PDO::FETCH_OBJ);
+        return $company;
+    }
+    
+    function insertGame($gameName, $genre, $year, $score, $company) {
+        $select= $this->db->prepare('INSERT INTO games (game_ID, game_name, genre, year, score, company_ID) VALUES (NULL,?,?,?,?,?)');
+        $select->execute([$gameName, $genre, $year, $score, $company]);
+    }
+    
+    function insertCompany($companyName){
+        $select= $this->db->prepare('INSERT INTO company(company_ID, company_name) VALUES (NULL,?)');
+        $select->execute([$companyName]);
     }
 }

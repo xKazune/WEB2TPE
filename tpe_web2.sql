@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 17:51:00
+-- Tiempo de generación: 17-10-2023 a las 01:49:26
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -32,6 +32,15 @@ CREATE TABLE `company` (
   `Company_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `company`
+--
+
+INSERT INTO `company` (`Company_id`, `Company_name`) VALUES
+(1, 'Rockstar Games'),
+(2, 'Epic Games'),
+(3, 'Valve');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +55,18 @@ CREATE TABLE `games` (
   `Puntutation` int(11) NOT NULL,
   `Company_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `games`
+--
+
+INSERT INTO `games` (`Game_ID`, `Game_name`, `Genre`, `Year`, `Puntutation`, `Company_id`) VALUES
+(1, 'Red Dead Redemption 2', 'Adventure', 2018, 10, 1),
+(2, 'Dota 2', 'Moba', 2013, 2, 3),
+(3, 'GTA SA', 'Open wolrd', 2013, 2, 1),
+(4, 'League of Legends', 'Moba', 2009, 9, 3),
+(5, 'Fortine', 'Battle Royale', 2017, 10, 2),
+(6, 'Left 4 Dead 2', 'Action', 2009, 10, 3);
 
 --
 -- Índices para tablas volcadas
@@ -65,6 +86,22 @@ ALTER TABLE `games`
   ADD KEY `Company_id` (`Company_id`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `company`
+--
+ALTER TABLE `company`
+  MODIFY `Company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `games`
+--
+ALTER TABLE `games`
+  MODIFY `Game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -72,7 +109,7 @@ ALTER TABLE `games`
 -- Filtros para la tabla `games`
 --
 ALTER TABLE `games`
-  ADD CONSTRAINT `games_ibfk_1` FOREIGN KEY (`Company_id`) REFERENCES `company` (`Company_id`);
+  ADD CONSTRAINT `games_ibfk_1` FOREIGN KEY (`Company_id`) REFERENCES `company` (`Company_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -20,7 +20,37 @@ class GameController
     }
 
     function home() {
-        $games = $this->gameModel->getGames();
-        $this->gameView->showHome($games);
+        $games = $this->gameModel->getGamesandCompany();
+        $compa = $this->gameModel->getCompany();
+        $this->gameView->showHome($games, $compa);
+    }
+
+    function showHomeLocation(){
+        $this->gameView->showHomeLocation();
+    }
+
+    function showForm(){
+        $company = $this->gameModel->getCompany();
+        $this->gameView->showForm($company);
+    }
+    
+    function addGame(){
+        $gameName = $_POST ['gameName'];
+        $genre = $_POST ['genre'];
+        $year = $_POST ['year'];
+        $score = $_POST ['score'];
+        $company = $_POST ['company'];
+        $this->gameModel->insertGame($gameName,$genre,$year,$score,$company);
+        $this->gameView->showHomeLocation();
+    }
+
+    function addCompany(){
+        $companyName = $_POST ['companyName'];
+        $this->gameModel->insertCompany($companyName);
+        $this->gameView->showHomeLocation();
+    }
+
+    function loginUser(){
+        $this->gameView->showLogin();
     }
 }
