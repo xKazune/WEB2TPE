@@ -50,7 +50,18 @@ class GameController
         $this->gameView->showHomeLocation();
     }
 
-    function loginUser(){
+    function login(){
         $this->gameView->showLogin();
+    }
+    
+    function loginUser(){
+        $username = $_POST ['username'];
+        $password = $_POST ['password'];
+        $user = $this->gameModel->getUserByName($username);
+        if (isset($user)){
+            if (password_verify($user["password"], $password)){
+                
+            }
+        }
     }
 }

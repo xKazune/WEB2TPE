@@ -32,6 +32,9 @@ switch ($params[0]){
         $controller->showForm();
         break;
     case 'login':
+        $controller->login();
+        break;
+    case 'loguear':
         $controller->loginUser();
         break;
     default:

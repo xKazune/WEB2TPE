@@ -26,7 +26,7 @@ class GameModel
         return $games;
     }
 
-    // FUNCIONA PARA OBTENER LOS DATOS DE LAS COMPAÑIAS
+    // FUNCIONA PARA OBTENER LOS DATOS DE LAS COMPANIAS
     function getCompany() {
         $select= $this->db->prepare("SELECT * FROM company");
         $select->execute();
@@ -42,5 +42,11 @@ class GameModel
     function insertCompany($companyName){
         $select= $this->db->prepare('INSERT INTO company(company_ID, company_name) VALUES (NULL,?)');
         $select->execute([$companyName]);
+    }
+
+    function getUserByName($username){
+        $select= $this->db->prepare('SELECT * FROM users WHERE username=?');
+        $select->execute([$username]);
+        return $select->fetchAll(PDO::FETCH_ASSOC);
     }
 }
