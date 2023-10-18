@@ -73,6 +73,32 @@ class GameController
         header('Location: ' . BASE_URL . 'adminPanel');
     }
 
+    function showGameEditForm($id){
+        $this->View->showGameEditForm($id);
+    }
+
+    function editGame(){
+        $game_ID = $_POST ['game_ID'];
+        $gameName = $_POST ['gameName'];
+        $genre = $_POST ['genre'];
+        $year = $_POST ['year'];
+        $score = $_POST ['score'];
+
+        $this->gameModel->editGame($game_ID,$gameName, $genre, $year, $score);
+        header('Location: ' . BASE_URL . 'adminPanel');
+    }
+
+    function showCompanyEditForm($id){
+        $this->View->showEditCompany($id);
+    }
+
+    function editCompany(){
+        $company_ID = $_POST ['company_ID'];
+        $companyName = $_POST ['companyName'];
+        $this->gameModel->editCompany($company_ID, $companyName);
+        header('Location: ' . BASE_URL . 'adminPanel');
+    }
+
     function login(){
         $this->View->showLogin();
     }
@@ -86,9 +112,9 @@ class GameController
                 session_start();
                 $_SESSION['username'] = $username;
                 header('Location: ' . BASE_URL . 'adminPanel');
-
-
             }
+            else
+                $this->View->showLogin();
         }
     }
 }

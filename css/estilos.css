@@ -1,10 +1,9 @@
 footer{
-    background: rgb(129,240,233);
-    background: linear-gradient(90deg, rgba(129,240,233,1) 0%, rgba(91,255,231,1) 45%, rgba(0,237,227,1) 100%);
+
     position: absolute;
     bottom: 0;
     overflow: auto;
-    background-color: grey;
+    background-color: red;!important;
 
 }
 

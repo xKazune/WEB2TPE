@@ -47,6 +47,21 @@ switch ($params[0]){
     case 'deleteCompany':
         $controller->deleteCompany($params[1]);
         break;
+    case 'showEditGame':
+        $controller->showGameEditForm($params[1]);
+        break;
+    case 'editGame':
+        $controller->editGame();
+        break;
+    case 'showEditCompany':
+        $controller->showCompanyEditForm($params[1]);
+        break;
+    case 'editCompany':
+        $controller->editCompany();
+        break;
+
+
+
 
     default:
         echo "404 Page Not Found";

@@ -48,6 +48,17 @@ class View
         $this->smarty->assign('compa', $compa);
         $this->smarty->display('./templates/adminPanel.tpl');
     }
+
+    function showGameEditForm($game_ID){
+        $this->smarty->assign( 'game_ID', $game_ID);
+        $this->smarty->display('./templates/editGameForm.tpl');
+
+    }
+
+    function showEditCompany($company_ID){
+        $this->smarty->assign('company_ID', $company_ID);
+        $this->smarty->display('./templates/editCompanyForm.tpl');
+    }
     function redirection($ruta){
 
     }

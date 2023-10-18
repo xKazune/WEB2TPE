@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-10-18 04:53:40
+/* Smarty version 4.2.1, created on 2023-10-18 23:59:29
   from 'C:\xampp\htdocs\WEB2TPE\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_652f48b430eee1_30164895',
+  'unifunc' => 'content_65305541afcde7_90882997',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fdfdbb5a00d5e4b0519ff691cbbaa6d1013fc8b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEB2TPE\\templates\\header.tpl',
-      1 => 1697597619,
+      1 => 1697666364,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_652f48b430eee1_30164895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65305541afcde7_90882997 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo (BASE_URL).('./css/estilos.css');?>
+    <base href="<?php echo BASE_URL;?>
 ">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>
+css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+
 
     <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
 </title>

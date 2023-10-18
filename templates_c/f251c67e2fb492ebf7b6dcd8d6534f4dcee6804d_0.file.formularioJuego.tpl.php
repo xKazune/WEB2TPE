@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-10-17 21:13:58
+/* Smarty version 4.2.1, created on 2023-10-18 23:54:48
   from 'C:\xampp\htdocs\WEB2TPE\templates\formularioJuego.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_652edcf644a193_81650454',
+  'unifunc' => 'content_653054285fa172_03735250',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f251c67e2fb492ebf7b6dcd8d6534f4dcee6804d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WEB2TPE\\templates\\formularioJuego.tpl',
-      1 => 1697570036,
+      1 => 1697666079,
       2 => 'file',
     ),
   ),
@@ -22,20 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer2.tpl' => 1,
   ),
 ),false)) {
-function content_652edcf644a193_81650454 (Smarty_Internal_Template $_smarty_tpl) {
-?><!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?php echo (BASE_URL).('css/estilos.css');?>
-">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
+function content_653054285fa172_03735250 (Smarty_Internal_Template $_smarty_tpl) {
+?>
     <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('titulo'=>"Home - Personas"), 0, false);
 ?>
     <div class="row col-12 d-flex justify-content-center">
@@ -76,7 +64,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <input class="text-center m-4" type="submit" value="Agregar">
     </form>
     <?php $_smarty_tpl->_subTemplateRender("file:footer2.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-</body>
-</html><?php }
+}
 }

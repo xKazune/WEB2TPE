@@ -56,7 +56,17 @@ class GameModel
     }
 
     function deleteCompany($id){
-        $select= $this->db->prepare('DELETE FROM company WHERE company_ID=?');
+        $select = $this->db->prepare('DELETE FROM company WHERE company_ID=?');
         $select->execute([$id]);
+    }
+
+    function editGame($id, $gameName, $genre, $year, $score){
+        $select = $this->db->prepare('UPDATE games SET game_name = ?, genre = ?, year = ?, score = ? WHERE game_ID = ?');
+        $select->execute([$gameName, $genre, $year, $score, $id]);
+    }
+
+    function editCompany($company_ID, $companyName){
+        $select = $this->db->prepare('UPDATE company SET company_name = ? WHERE company_ID = ?');
+        $select->execute([$companyName, $company_ID]);
     }
 }
