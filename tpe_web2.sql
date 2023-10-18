@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2023 a las 01:49:26
+-- Tiempo de generación: 17-10-2023 a las 23:19:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -28,18 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `company` (
-  `Company_id` int(11) NOT NULL,
-  `Company_name` varchar(45) NOT NULL
+  `company_ID` int(11) NOT NULL,
+  `company_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `company`
 --
 
-INSERT INTO `company` (`Company_id`, `Company_name`) VALUES
+INSERT INTO `company` (`company_ID`, `company_name`) VALUES
 (1, 'Rockstar Games'),
 (2, 'Epic Games'),
-(3, 'Valve');
+(3, 'Valve'),
+(4, 'GearBox'),
+(5, 'Santa Monica');
 
 -- --------------------------------------------------------
 
@@ -48,25 +50,45 @@ INSERT INTO `company` (`Company_id`, `Company_name`) VALUES
 --
 
 CREATE TABLE `games` (
-  `Game_ID` int(11) NOT NULL,
-  `Game_name` varchar(45) NOT NULL,
-  `Genre` varchar(45) NOT NULL,
-  `Year` int(11) NOT NULL,
-  `Puntutation` int(11) NOT NULL,
-  `Company_id` int(11) NOT NULL
+  `game_ID` int(11) NOT NULL,
+  `game_name` varchar(45) NOT NULL,
+  `genre` varchar(45) NOT NULL,
+  `year` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  `company_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `games`
 --
 
-INSERT INTO `games` (`Game_ID`, `Game_name`, `Genre`, `Year`, `Puntutation`, `Company_id`) VALUES
+INSERT INTO `games` (`game_ID`, `game_name`, `genre`, `year`, `score`, `company_ID`) VALUES
 (1, 'Red Dead Redemption 2', 'Adventure', 2018, 10, 1),
 (2, 'Dota 2', 'Moba', 2013, 2, 3),
-(3, 'GTA SA', 'Open wolrd', 2013, 2, 1),
+(3, 'GTA SA', 'Open world', 2013, 2, 1),
 (4, 'League of Legends', 'Moba', 2009, 9, 3),
-(5, 'Fortine', 'Battle Royale', 2017, 10, 2),
-(6, 'Left 4 Dead 2', 'Action', 2009, 10, 3);
+(5, 'Fortnite', 'Battle Royale', 2017, 10, 2),
+(6, 'Left 4 Dead 2', 'Action', 2009, 10, 3),
+(7, 'lol', 'moba', 2000, 10, 1),
+(8, 'God of War', 'Accion', 2018, 10, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`username`, `password`) VALUES
+('webadmin', '$2y$10$p136De4njcIQoYn8iCwd.Oqdvkr.duvE4sRcNcVUtNR7k4VNMroRm');
 
 --
 -- Índices para tablas volcadas
@@ -76,14 +98,14 @@ INSERT INTO `games` (`Game_ID`, `Game_name`, `Genre`, `Year`, `Puntutation`, `Co
 -- Indices de la tabla `company`
 --
 ALTER TABLE `company`
-  ADD PRIMARY KEY (`Company_id`);
+  ADD PRIMARY KEY (`company_ID`);
 
 --
 -- Indices de la tabla `games`
 --
 ALTER TABLE `games`
-  ADD PRIMARY KEY (`Game_ID`),
-  ADD KEY `Company_id` (`Company_id`);
+  ADD PRIMARY KEY (`game_ID`),
+  ADD KEY `Company_id` (`company_ID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -93,13 +115,13 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT de la tabla `company`
 --
 ALTER TABLE `company`
-  MODIFY `Company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `company_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `games`
 --
 ALTER TABLE `games`
-  MODIFY `Game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `game_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

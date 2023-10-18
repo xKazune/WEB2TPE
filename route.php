@@ -2,6 +2,7 @@
 
 use controller\GameController;
 
+require_once "./helpers/helper.php";
 include_once './controller/GameController.php';
 include_once 'config.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -17,9 +18,6 @@ $params = explode('/', $action);
 
 switch ($params[0]){
     case 'home':
-        $controller->showHomeLocation();
-        break;
-    case 'listar':
         $controller->home();
         break;
     case 'agregarJuego':
@@ -37,6 +35,19 @@ switch ($params[0]){
     case 'loguear':
         $controller->loginUser();
         break;
+    case 'adminPanel':
+        $controller->homeAdmin();
+        break;
+    case 'gamePanel':
+        $controller->showGamePanel();
+        break;
+    case 'deleteGame':
+        $controller->deleteGame($params[1]);
+        break;
+    case 'deleteCompany':
+        $controller->deleteCompany($params[1]);
+        break;
+
     default:
         echo "404 Page Not Found";
         break;

@@ -49,4 +49,14 @@ class GameModel
         $select->execute([$username]);
         return $select->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function deleteGame($id){
+        $select= $this->db->prepare('DELETE FROM games WHERE game_ID=?');
+        $select->execute([$id]);
+    }
+
+    function deleteCompany($id){
+        $select= $this->db->prepare('DELETE FROM company WHERE company_ID=?');
+        $select->execute([$id]);
+    }
 }

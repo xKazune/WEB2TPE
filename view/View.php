@@ -5,7 +5,7 @@ use Smarty;
 
 include_once "libs/smarty/smarty/libs/Smarty.class.php";
 
-class GameView
+class View
 {
     private Smarty $smarty;
 
@@ -17,6 +17,16 @@ class GameView
         $this->smarty->assign('games',$games);
         $this->smarty->assign('compa', $compa);
         $this->smarty->display('./templates/home.tpl');
+    }
+
+    function showAdminPanel($games,$compa){
+        $this->smarty->assign('games',$games);
+        $this->smarty->assign('compa', $compa);
+        $this->smarty->display('./templates/adminPanel.tpl');
+    }
+
+    function showGamePanel(){
+        $this->smarty->display('./templates/gamePanel.tpl');
     }
 
     function showHomeLocation(){
@@ -31,5 +41,14 @@ class GameView
 
     function showLogin(){
         $this->smarty->display('./templates/login.tpl');
+    }
+
+    function showHomeAdmin ($games,$compa) {
+        $this->smarty->assign('games',$games);
+        $this->smarty->assign('compa', $compa);
+        $this->smarty->display('./templates/adminPanel.tpl');
+    }
+    function redirection($ruta){
+
     }
 }

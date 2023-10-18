@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{BASE_URL|cat:'css/estilos.css'}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ BASE_URL ~ 'css/estilos.css' }}">
+
     <title>{$titulo}</title>
 </head>
 <body>
-<div class="row border border-4 m-1 d-flex justify-content-center">
-    <h1 class=""><span class="text-success">My</span> <span class="text-warning">Game</span> <span class="text-danger"> List</span>  </h1>
-</div>
-</body>
-</html>
+    <header>
+        <navbar class="row border border-4 m-1 d-flex justify-content-center">
+            <h1 class=""><span class="text-success">My</span> <span class="text-warning">Game</span> <span class="text-danger"> List</span>  </h1>
+            <div class="h-100 mx-3"><a href="{BASE_URL|cat:login}"><button class="h-100">Iniciar Sesion</button></a></div>
+        </navbar>
+    </header>

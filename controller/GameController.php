@@ -3,35 +3,48 @@
 namespace controller;
 
 include_once '.\model\GameModel.php';
-include_once '.\view\GameView.php';
+include_once '.\view\View.php';
 
+use helpers\Helper;
 use model\GameModel;
-use view\GameView;
+use view\View;
 
 class GameController
 {
     private GameModel $gameModel;
 
-    private GameView $gameView;
+    private View $View;
     function __construct()
     {
         $this->gameModel = new GameModel();
-        $this->gameView = new GameView();
+        $this->View = new View();
+    }
+
+    function showAdminPanel($games, $compa){
+
+        if(Helper::isLogged())
+            $this->View->showAdminPanel($games, $compa);
+    }
+
+    function showGamePanel(){
+        if(Helper::isLogged())
+            $this->View->showGamePanel();
     }
 
     function home() {
         $games = $this->gameModel->getGamesandCompany();
         $compa = $this->gameModel->getCompany();
-        $this->gameView->showHome($games, $compa);
+        $this->View->showHome($games, $compa);
     }
-
-    function showHomeLocation(){
-        $this->gameView->showHomeLocation();
+    function homeAdmin() {
+        $games = $this->gameModel->getGamesandCompany();
+        $compa = $this->gameModel->getCompany();
+        $this->View->showHomeAdmin($games, $compa);
     }
 
     function showForm(){
         $company = $this->gameModel->getCompany();
-        $this->gameView->showForm($company);
+        $this->View->showForm($company);
     }
     
     function addGame(){
@@ -41,17 +54,27 @@ class GameController
         $score = $_POST ['score'];
         $company = $_POST ['company'];
         $this->gameModel->insertGame($gameName,$genre,$year,$score,$company);
-        $this->gameView->showHomeLocation();
+        header('Location: ' . BASE_URL . 'adminPanel');
     }
 
     function addCompany(){
         $companyName = $_POST ['companyName'];
         $this->gameModel->insertCompany($companyName);
-        $this->gameView->showHomeLocation();
+        header('Location: ' . BASE_URL . 'adminPanel');
+    }
+
+    function deleteGame($id){
+        $this->gameModel->deleteGame($id);
+        header('Location: ' . BASE_URL . 'adminPanel');
+    }
+
+    function deleteCompany($id){
+        $this->gameModel->deleteCompany($id);
+        header('Location: ' . BASE_URL . 'adminPanel');
     }
 
     function login(){
-        $this->gameView->showLogin();
+        $this->View->showLogin();
     }
     
     function loginUser(){
@@ -59,8 +82,12 @@ class GameController
         $password = $_POST ['password'];
         $user = $this->gameModel->getUserByName($username);
         if (isset($user)){
-            if (password_verify($user["password"], $password)){
-                
+            if (password_verify($password , $user[0]['password'])){
+                session_start();
+                $_SESSION['username'] = $username;
+                header('Location: ' . BASE_URL . 'adminPanel');
+
+
             }
         }
     }
